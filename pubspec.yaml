@@ -1,5 +1,5 @@
 name: event_notifier
-description: Allows notifiying listeners with an object.
+description: Allows notifiying listeners with an object and subscribe on types of object.
 version: 0.0.1
 homepage: https://github.com/EvGeniyLell/event_notifier
 
