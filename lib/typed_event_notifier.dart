@@ -36,4 +36,3 @@ class TypedEventNotifier<T extends Object> {
     });
   }
 }
-
