@@ -12,7 +12,7 @@ and the Flutter guide for
 -->
 
 The `TypedEventNotifier` library allows notifying listeners with an object.
-listeners can be subscribed on only special type or group objects.
+listeners can be subscribed to only a special type or group of objects.
 
 ## Installation
 
