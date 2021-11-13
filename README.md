@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-The `EventNotifier` library allows notifying listeners with an object.
+The `TypedEventNotifier` library allows notifying listeners with an object.
 listeners can be subscribed on only special type or group objects.
 
 ## Installation
@@ -20,7 +20,7 @@ Add on pubspec.yml:
 
 ```
 dependencies:
-  event_notifier: ... // latest package version
+  typed_event_notifier: ... // latest package version
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ dependencies:
 See example in `/example` folder
 
 ```dart
-import 'package:event_notifier/event_notifier.dart';
+import 'package:typed_event_notifier/typed_event_notifier.dart';
 
 
 /// Class [ExampleNotifier].
@@ -37,7 +37,7 @@ import 'package:event_notifier/event_notifier.dart';
 /// It can send notifications to listeners with an object
 /// and notify listeners if they are registered for this object type
 /// or extended objects.
-class ExampleNotifier extends EventNotifier<Event> {
+class ExampleNotifier extends TypedEventNotifier<Event> {
   /// Create [ExampleNotifier] instance.
   ExampleNotifier();
   

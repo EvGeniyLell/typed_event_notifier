@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:event_notifier/event_notifier.dart';
+import 'package:typed_event_notifier/typed_event_notifier.dart';
 
 void main() {
   /// The notifier.
-  final EventNotifier<Event> notifier = EventNotifier<Event>();
+  final TypedEventNotifier<Event> notifier = TypedEventNotifier<Event>();
 
   /// Mok of currentPageChanged.
   final void Function(CurrentPageChangedEvent event) currentPageChanged =

@@ -1,16 +1,16 @@
-library event_notifier;
+library typed_event_notifier;
 
-/// Class [EventNotifier].
+/// Class [TypedEventNotifier].
 ///
 /// Allows notifying listeners with an object.
-class EventNotifier<T extends Object> {
+class TypedEventNotifier<T extends Object> {
   final List<dynamic> _listeners = <dynamic>[];
 
   /// Number of listeners.
   int get numberOfListeners => _listeners.length;
 
-  /// Create [EventNotifier] instance.
-  EventNotifier();
+  /// Create [TypedEventNotifier] instance.
+  TypedEventNotifier();
 
   /// Add listener.
   void addListener<L extends T>(void Function(L object) listener) {

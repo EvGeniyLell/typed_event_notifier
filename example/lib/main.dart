@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:event_notifier/event_notifier.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:typed_event_notifier/typed_event_notifier.dart';
 
 void main() {
   runApp(const App());
@@ -74,7 +74,7 @@ or extended objects.
 final ExampleNotifier notifier = ExampleNotifier();
 
 /// Class [ExampleNotifier]
-class ExampleNotifier extends EventNotifier<Event> {
+class ExampleNotifier extends TypedEventNotifier<Event> {
   /// Create [ExampleNotifier] instance.
   ExampleNotifier();
 
