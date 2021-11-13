@@ -1,6 +1,6 @@
 name: typed_event_notifier
 description: Allows notifiying listeners with an object and subscribe on types of object.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/EvGeniyLell/typed_event_notifier
 
 environment:
