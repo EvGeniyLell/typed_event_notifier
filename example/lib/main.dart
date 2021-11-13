@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:event_notifier/event_notifier.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +21,8 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(
-        title: 'Flutter Demo Home Page',
+        title: 'Event Notifier Demo',
+        notifier: notifier,
       ),
     );
   }
@@ -63,9 +65,13 @@ class PagesLoadedEvent extends Event {
 
 /*
 The example of notifier.
-They can send notifiers to listeners with object
-and notifier listeners if they registered on this object type.
+It can send notifications to listeners with an object
+and notify listeners if they are registered for this object type
+or extended objects.
  */
+
+/// Instance of the demo.
+final ExampleNotifier notifier = ExampleNotifier();
 
 /// Class [ExampleNotifier]
 class ExampleNotifier extends EventNotifier<Event> {
@@ -115,11 +121,11 @@ class CurrentPageOnlyListener extends StatefulWidget {
 }
 
 class _CurrentPageOnlyListenerState extends State<CurrentPageOnlyListener> {
-  String message = 'empty';
+  String message = 'CurrentPageOnly: empty';
 
   void currentPageChanged(CurrentPageChangedEvent event) {
     setState(() {
-      message = 'now current page is ${event.currentPage}';
+      message = 'CurrentPageOnly: now current page is ${event.currentPage}';
     });
   }
 
@@ -161,17 +167,17 @@ class AnyListener extends StatefulWidget {
 }
 
 class _AnyListenerState extends State<AnyListener> {
-  String message = 'empty';
+  String message = 'Any: empty';
 
   void any(Event event) {
     if (event is CurrentPageChangedEvent) {
       setState(() {
-        message = 'now current page is ${event.currentPage}';
+        message = 'Any: now current page is ${event.currentPage}';
       });
     }
     if (event is PagesLoadedEvent) {
       setState(() {
-        message = 'new loaded pages is ${event.pages}';
+        message = 'Any: new loaded pages is ${event.pages}';
       });
     }
   }
@@ -197,8 +203,9 @@ class _AnyListenerState extends State<AnyListener> {
 /// Class [MyHomePage].
 class MyHomePage extends StatelessWidget {
   /// Create [MyHomePage] instance.
-  MyHomePage({
+  const MyHomePage({
     required this.title,
+    required this.notifier,
     Key? key,
   }) : super(key: key);
 
@@ -206,7 +213,7 @@ class MyHomePage extends StatelessWidget {
   final String title;
 
   /// Notifier.
-  final ExampleNotifier notifier = ExampleNotifier();
+  final ExampleNotifier notifier;
 
   void _setNewCurrentPage() {
     final Random random = Random();
@@ -235,11 +242,11 @@ class MyHomePage extends StatelessWidget {
             CurrentPageOnlyListener(notifier: notifier),
             const SizedBox(height: 10),
             AnyListener(notifier: notifier),
-            const SizedBox(height: 10),
+            const SizedBox(height: 40),
             const Text(
               'You can push the buttons to notify listeners.',
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _setNewCurrentPage,
               child: const Text('New Current Page'),
